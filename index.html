@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Map Navigator</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon">⌖</span><div><strong>Map Navigator</strong><small>Find your way</small></div></div>
+    <div id="apiStatus" class="status">Connecting to API…</div>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <p class="eyebrow">ROUTE PLANNER</p>
+      <h1>Where to?</h1>
+      <p class="intro">Search for two places to plan your journey.</p>
+
+      <label for="fromInput">Starting point</label>
+      <div class="search-wrap">
+        <input id="fromInput" type="text" placeholder="e.g. India Gate, Delhi" autocomplete="off">
+        <button id="fromSearch" aria-label="Search starting point">Search</button>
+      </div>
+      <div id="fromResults" class="results"></div>
+
+      <label for="toInput">Destination</label>
+      <div class="search-wrap">
+        <input id="toInput" type="text" placeholder="e.g. Red Fort, Delhi" autocomplete="off">
+        <button id="toSearch" aria-label="Search destination">Search</button>
+      </div>
+      <div id="toResults" class="results"></div>
+
+      <button id="routeBtn" class="primary" disabled>Find route <span>→</span></button>
+      <button id="locateBtn" class="secondary">◎ Use my current location</button>
+
+      <div id="message" class="message" role="status">Choose a starting point and destination.</div>
+      <section id="routeInfo" class="route-info hidden">
+        <p class="eyebrow">ROUTE DETAILS</p>
+        <div class="metric-row"><div><strong id="distance">—</strong><small>Distance</small></div><div><strong id="duration">—</strong><small>Estimated time</small></div></div>
+        <p class="fine-print">Estimates are supplied by the routing service and may differ from actual travel time.</p>
+        <div id="alternatives"></div>
+      </section>
+      <footer>Map data © OpenStreetMap contributors</footer>
+    </aside>
+    <section class="map-area"><div id="map"></div><div class="map-hint">Select places to display a route</div></section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
