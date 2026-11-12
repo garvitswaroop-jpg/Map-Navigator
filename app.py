@@ -3,7 +3,7 @@ import requests
 from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder="../frontend", static_url_path="")
+app = Flask(__name__, static_folder=".", static_url_path="")
 CORS(app)
 
 NOMINATIM_URL = "https://nominatim.openstreetmap.org/search"
@@ -84,13 +84,11 @@ def calculate_route():
 
 @app.get("/")
 def index():
-    return send_from_directory("../frontend", "index.html")
-
+    return send_from_directory(".", "index.html")
 
 @app.get("/<path:path>")
 def frontend_files(path):
-    return send_from_directory("../frontend", path)
-
+    return send_from_directory(".", path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=True)
